@@ -1,7 +1,6 @@
 # Falcon Plus Api
 
-[OpenFalcon Plus](https://github.com/open-falcon/falcon-plus) Api.
-
+[OpenFalcon Plus](https://github.com/open-falcon/falcon-plus) Api.  
 Generate from its doc.
 
 ## Installation
