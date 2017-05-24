@@ -27,6 +27,7 @@ defmodule FalconPlusApi.Mixfile do
       {:httpoison, "~> 0.11.0"},
       {:poison, "~> 2.0"},
       {:timex, "~> 3.1"},
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 
