@@ -29,15 +29,17 @@ defmodule FalconPlusApi.Util do
   """
   def url_with_params(url, param, addr \\ nil) when not is_nil(param) do 
 
-    url(url, addr)
-      |> String.split( "/")
-      |> Enum.map(fn str ->
-        case Regex.run(~R/#\{(.+?)\}/, str, capture: :all_but_first) do
-          [key] -> param[key]
-          _ -> str
-        end
-      end) 
-      |> Enum.join("/")
+    url = url(url, addr)
+    Regex.scan(~R/#\{(.+?)\}/, url) |> Enum.reduce(url, fn([rep, key],acc) -> 
+
+      value = if is_binary(param[key]) do
+        param[key]
+      else
+        to_string(param[key])
+      end
+
+      String.replace(acc, rep, value)
+    end)
 
   end
 

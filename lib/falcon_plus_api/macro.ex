@@ -63,7 +63,7 @@ defmodule FalconPlusApi.Macro do
               new_url = FalconPlusApi.Util.url_with_params(unquote(url), url_param, addr)
 
               if Application.get_env(:falcon_plus_api, :debug), do: Logger.info "Api url: #{new_url}"
-              headers = [{"Apitoken", sig},{"Accept", "application/json"}]
+              headers = [{"Apitoken", sig},{"Content-Type", "application/json"}]
               body = Poison.encode!(post_param)
               response = HTTPoison.request(unquote(type), new_url, body, headers, options ++ @api_pool)
               FalconPlusApi.Macro.handle_response(response)
@@ -76,7 +76,7 @@ defmodule FalconPlusApi.Macro do
               new_url = FalconPlusApi.Util.url(unquote(url), addr)
 
               if Application.get_env(:falcon_plus_api, :debug), do: Logger.info "Api url: #{new_url}"
-              headers = [{"Apitoken", sig},{"Accept", "application/json"}]
+              headers = [{"Apitoken", sig},{"Content-Type", "application/json"}]
               body = Poison.encode!(post_param)
               response = HTTPoison.request(unquote(type), new_url, body, headers, options ++ @api_pool)
               FalconPlusApi.Macro.handle_response(response)
@@ -99,30 +99,6 @@ defmodule FalconPlusApi.Macro do
           FalconPlusApi.Macro.handle_response(response)
         end
       end
-
-      #def unquote(name)(body \\ "", headers \\ [], options \\ []) do
-      #  new_url = if options[:append], do: unquote(url) <> "/" <> options[:append], else: unquote(url)
-      #  headers = if unquote(with_key), do: headers ++ @api_head, else: headers
-      #  
-
-      #  Logger.debug inspect [unquote(type), new_url, body, headers, options]
-      #  HTTPoison.request(unquote(type), new_url, body, headers, options ++ @api_pool)
-
-      #end
-
-
-      #def unquote(:"#{name}!")(body \\ "", headers \\ [], options \\ []) do
-      #  new_url = if options[:append], do: unquote(url) <> "/" <> options[:append], else: unquote(url)
-
-      #  headers = if unquote(with_key), do: headers ++ @api_head, else: headers
-
-      #  Logger.debug inspect [unquote(type), new_url, body, headers, options]
-      #  ret = HTTPoison.request!(unquote(type), new_url, body, headers, options ++ @api_pool)
-      #        |> Map.fetch!(:body) |> Poison.decode!
-
-      #  if is_map(ret), do: ret["data"] || ret, else: ret
-
-      #end
 
     end
 

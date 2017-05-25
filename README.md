@@ -63,4 +63,8 @@ FalconPlusApi.Api.User.list("root", "second")
 
 #list user from second address with foo's token
 FalconPlusApi.Api.User.list("foo", "second")
+
+#query with params
+FalconPlusApi.Api.Team.list("foo", nil, params: [{"q", "^a"}]) 
+
 ```

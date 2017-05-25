@@ -67,7 +67,7 @@ ex. /api/v1/hostgroup/343
   }
 ]```
   """
-  create_api(:list, :get, url: ~S</api/v1/hostgroup/>, need_sig: true)
+  create_api(:list, :get, url: ~S</api/v1/hostgroup>, need_sig: true)
 
 
   @doc """
