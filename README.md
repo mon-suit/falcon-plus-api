@@ -1,7 +1,6 @@
 # Falcon Plus Api
 
-[OpenFalcon Plus](https://github.com/open-falcon/falcon-plus) Api.  
-Generate from its doc.
+[OpenFalcon Plus](https://github.com/open-falcon/falcon-plus) Api. Generate from its doc.
 
 ## Installation
 
@@ -59,12 +58,14 @@ h FalconPlusApi.Api.User.list
 FalconPlusApi.Api.User.list("root")
 
 #list user from second address with root's token
-FalconPlusApi.Api.User.list("root", "second")
+FalconPlusApi.Api.User.list("root", :second)
 
 #list user from second address with foo's token
-FalconPlusApi.Api.User.list("foo", "second")
+FalconPlusApi.Api.User.list("foo", :second)
 
-#query with params
-FalconPlusApi.Api.Team.list("foo", nil, params: [{"q", "^a"}]) 
+# /api/v1/team?q=a.+
+FalconPlusApi.Api.Team.list("foo", nil, params: [{"q", "a.+"}]) 
 
+# /api/v1/hostgroup/#{hostgroup_id}
+FalconPlusApi.Api.Hostgroup.get_info_by_id("foo", %{"hostgroup_id" => 3221})
 ```

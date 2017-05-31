@@ -3,6 +3,46 @@ defmodule FalconPlusApi.Api.Hostgroup do
 
   @doc """
 * [Session](#/authentication) Required
+* Hosts 每次会覆盖该HostGroup内现有的Host List
+* 如果使用者不是 Admin 只能对创建的hostgroup做操作
+
+### Request
+```{
+  "hosts": [
+    "testhostgroup",
+    "agent_test"
+  ],
+  "hostgroup_id": 343
+}```
+
+### Response
+
+```Status: 200```
+```{"message":"[9312 9313] bind to hostgroup: 343"}```
+  """
+  create_api(:add_host, :post, url: ~S</api/v1/hostgroup/host>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
+
+### Request
+```{"name":"testhostgroup"}```
+
+### Response
+
+```Status: 200```
+```{
+  "id": 343,
+  "grp_name": "testhostgroup",
+  "create_user": "root"
+}```
+  """
+  create_api(:create, :post, url: ~S</api/v1/hostgroup>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
 ex. /api/v1/hostgroup/343
 * 如果使用者不是 Admin 只能对创建的hostgroup做操作
 
@@ -194,5 +234,23 @@ ex. /api/v1/hostgroup/343
 ```{"message":"template: 5 is unbind of HostGroup: 3"}```
   """
   create_api(:template_unbind, :put, url: ~S</api/v1/hostgroup/template>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
+* 如果使用者不是 Admin 只能对创建的hostgroup做操作
+
+### Request
+```{
+  "hostgroup_id": 343,
+  "host_id": 9312
+}```
+
+### Response
+
+```Status: 200```
+```{"message":"unbind host:9312 of hostgroup: 343"}```
+  """
+  create_api(:unbind_host, :put, url: ~S</api/v1/hostgroup/host>, need_sig: true)
 
 end

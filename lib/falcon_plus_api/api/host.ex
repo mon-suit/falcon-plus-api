@@ -59,22 +59,4 @@ defmodule FalconPlusApi.Api.Host do
   """
   create_api(:related_template, :get, url: ~S</api/v1/host/#{host_id}/template>, need_sig: true)
 
-
-  @doc """
-* [Session](#/authentication) Required
-
-### Request
-```{"name":"testhostgroup"}```
-
-### Response
-
-```Status: 200```
-```{
-  "id": 343,
-  "grp_name": "testhostgroup",
-  "create_user": "root"
-}```
-  """
-  create_api(:create, :post, url: ~S</api/v1/hostgroup>, need_sig: true)
-
 end

@@ -69,7 +69,7 @@ Update Action
 ```Status: 200```
 ```{"message":"template created"}```
   """
-  create_api(:create, :post, url: ~S</api/v1/template/>, need_sig: true)
+  create_api(:create, :post, url: ~S</api/v1/template>, need_sig: true)
 
 
   @doc """
@@ -212,7 +212,7 @@ Template List
   }
 ]```
   """
-  create_api(:list, :get, url: ~S</api/v1/template/>, need_sig: true)
+  create_api(:list, :get, url: ~S</api/v1/template>, need_sig: true)
 
 
   @doc """
