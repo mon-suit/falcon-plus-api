@@ -36,6 +36,15 @@ defmodule FalconPlusApi.Sig do
 
   end
 
+  def copy_sig(ori, dst) do
+    all = Agent.get(__MODULE__, fn map -> map end)
+    if all[ori] do
+      ori_sig = Poison.decode!(all[ori])
+      add_sig(%{ori_sig | "name" => dst})
+    end
+
+  end
+
   def all_sig do
 
     Agent.get(__MODULE__, fn map -> map end)
