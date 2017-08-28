@@ -124,6 +124,33 @@ For errors responses, see the [response status codes documentation](#/response-s
 
   @doc """
 * [Session](#/authentication) Required
+* ex. /api/v1/user/u/4/teams
+
+### Response
+
+```Status: 200```
+```{"teams":
+  [{
+    "id":3,
+    "name":"root",
+    "resume":"",
+    "creator":5},
+   {"id":32,
+    "name":"testteam",
+    "resume":"test22",
+    "creator":5
+   }]
+} ```
+
+For more example, see the [user](/doc/user.html).
+
+For errors responses, see the [response status codes documentation](#/response-status-codes).
+  """
+  create_api(:get_teams, :get, url: ~S</api/v1/user/u/#{uid}/teams>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
 * ex. /api/v1/user/u/4/in_teams?team_names=team1,team4
 
 ### Request

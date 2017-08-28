@@ -253,4 +253,65 @@ ex. /api/v1/hostgroup/343
   """
   create_api(:unbind_host, :put, url: ~S</api/v1/hostgroup/host>, need_sig: true)
 
+
+  @doc """
+* [Session](#/authentication) Required
+* ex. /api/v1/hostgroup
+
+### Request
+```{
+  "id" : 343,
+  "grp_name": "test1"
+}```
+
+### Response
+
+```Status: 200```
+```{
+  "message":"hostgroup profile updated"
+}```
+  """
+  create_api(:update, :put, url: ~S</api/v1/hostgroup/update/#{hostgroup_id}>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
+* 如果使用者不是 Admin 只能对创建的 HostGroup 做操作
+* ex. /api/v1/hostgroup/1/host
+
+### Request
+```{
+  "hosts": [
+    "host01",
+    "host02"
+  ],
+  "action": "add"
+}```
+
+### Response
+
+```Status: 200```
+```{
+  "message": "[host01, host02] bind to hostgroup: test, [] have been exist"
+}```
+
+### Request
+```{
+  "hosts": [
+    "host01",
+    "host02"
+  ],
+  "action": "remove"
+}```
+
+### Response
+
+```Status: 200```
+```{
+  "message": "[host01, host02] unbind to hostgroup: test"
+}```
+
+  """
+  create_api(:update_partial_hosts, :patch, url: ~S</api/v1/hostgroup/#{hostgroup_id}/host>, need_sig: true)
+
 end

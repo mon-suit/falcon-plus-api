@@ -87,6 +87,32 @@ Delete a Template
 
   @doc """
 * [Session](#/authentication) Required
+* ex. /api/v1/template/178/hostgroup
+
+### Response
+
+```Status: 200```
+```{
+  "hostgroups": [{
+      "id":33,
+      "grp_name":"HostGroup",
+      "create_user":"root"
+    }
+  ],
+  "template": {
+    "id": 178,
+    "tpl_name": "TemplateA",
+    "parent_id": 0,
+    "action_id": 141,
+    "create_user": "root"
+  }
+}```
+  """
+  create_api(:hgp_list, :get, url: ~S</api/v1/template/#{template_id}/hostgroup>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
 * ex. /api/v1/template/178
 
 ### Response

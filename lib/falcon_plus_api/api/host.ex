@@ -3,6 +3,34 @@ defmodule FalconPlusApi.Api.Host do
 
   @doc """
 * [Session](#/authentication) Required
+
+### Request
+```
+{
+    "ids": [1,2,3,4],
+    "maintain_begin": 1497951907,
+    "maintain_end": 1497951907
+}
+```
+or
+```
+{
+    "hosts": ["host.a","host.b"],
+    "maintain_begin": 1497951907,
+    "maintain_end": 1497951907
+}
+```
+
+### Response
+
+```Status: 200```
+```{ "message": "Through: hosts, Affect row: 2" }```
+  """
+  create_api(:maintain, :post, url: ~S</api/v1/host/maintain>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
 * ex. /api/v1/host/1647/hostgroup
 * grp_name: hostgroup name
 
@@ -58,5 +86,21 @@ defmodule FalconPlusApi.Api.Host do
 ]```
   """
   create_api(:related_template, :get, url: ~S</api/v1/host/#{host_id}/template>, need_sig: true)
+
+
+  @doc """
+* [Session](#/authentication) Required
+
+### Request
+```{"ids": [1,2,3,4]}```
+or
+```{"hosts": ["host.a","host.b"]}```
+
+### Response
+
+```Status: 200```
+```{ "message": "Through: hosts, Affect row: 2" }```
+  """
+  create_api(:reset, :delete, url: ~S</api/v1/host/maintain>, need_sig: true)
 
 end
