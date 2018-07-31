@@ -4,6 +4,97 @@ defmodule FalconPlusApi.Api.Host do
   @doc """
     * [Session](#/authentication) Required
     
+    ### Response
+    
+    ```Status: 200```
+    ```
+    [
+        {
+            "id": 7101,
+            "hostname": "foo1.bar.com",
+            "ip": "10.1.1.1",
+            "agent_version": "6.0.1",
+            "plugin_version": "plugin not enabled",
+            "maintain_begin": 1502781600,
+            "maintain_end": 1508052000
+        },
+        {
+            "id": 47313,
+            "hostname": "foo2.bar.com",
+            "ip": "10.1.1.2",
+            "agent_version": "",
+            "plugin_version": "",
+            "maintain_begin": 1502851980,
+            "maintain_end": 1502862780
+        }
+    ]
+    ```
+  """
+  def find_by_maintain(sig, addr, opts \\ []) do
+    sig = Sig.get_sig(sig)
+    ~s</api/v1/hosts/maintain>
+    |> Util.url(addr)
+    |> Conn.new()
+    |> Api.set_opts(opts)
+    |> Conn.put_req_header("Apitoken", sig)
+    |> Api.get
+    |> Api.get_result
+  end
+
+  @doc """
+    * [Session](#/authentication) Required
+    
+    ### Request
+    ```
+    {
+    	"metric": "agent.alive"
+    }
+    ```
+    
+    ### Response
+    
+    ```Status: 200```
+    ```
+    [
+        {
+            "strategy": {
+                "id": 13,
+                "metric": "agent.alive",
+                "tags": "",
+                "max_step": 1,
+                "priority": 2,
+                "func": "all(#10)",
+                "op": "<",
+                "right_value": "0",
+                "note": "machine is down",
+                "run_begin": "",
+                "run_end": "",
+                "tpl_id": 14
+            },
+            "hosts": [
+                "foo1.bar.com",
+                "foo2.bar.com",
+                "foo3.bar.com",
+            ]
+        },
+        ...
+    ]
+    ```
+  """
+  def find_by_strategy(sig, addr, opts \\ []) do
+    sig = Sig.get_sig(sig)
+    ~s</api/v1/host/find_by_strategy>
+    |> Util.url(addr)
+    |> Conn.new()
+    |> Api.set_opts(opts)
+    |> Conn.put_req_header("Apitoken", sig)
+    |> Api.post
+    |> Api.get_result
+  end
+
+  @doc """
+    * [Session](#/authentication) Required
+    
     ### Request
     ```
     {
