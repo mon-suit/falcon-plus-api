@@ -3,7 +3,7 @@ defmodule FalconPlusApi.Mixfile do
 
   def project do
     [app: :falcon_plus_api,
-     version: "0.2.1",
+     version: "1.0.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -26,7 +26,7 @@ defmodule FalconPlusApi.Mixfile do
     [
       {:poison, "~> 3.0"},
       {:maxwell, "~> 2.2"},
-      {:maxwell_compress, git: "https://github.com/milkwine/maxwell_compress"},
+      {:maxwell_compress, "~> 0.1.0"},
     ]
   end
 

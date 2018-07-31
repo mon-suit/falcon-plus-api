@@ -6,7 +6,7 @@
 
 ```elixir
 def deps do
-  [{:falcon_plus_api, "~> 0.1.0"}]
+  [{:falcon_plus_api, "~> 1.0.0"}]
 end
 ```
 
@@ -58,3 +58,12 @@ h FalconPlusApi.Api.User.list
 h FalconPlusApi.Api.Hostgroup.get_info_by_id
 FalconPlusApi.Api.Hostgroup.get_info_by_id(3221, "root", :first)
 ```
+## Generate Script
+
+You can generate api by your self.
+
+Run script and specify falcon plus root dir by passing `FALCON_PLUS` envirenment.
+```bash
+FALCON_PLUS=SOME_PATH/falcon-plus perl ./script/gen.pl
+```
+

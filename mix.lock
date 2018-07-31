@@ -11,7 +11,7 @@
   "idna": {:hex, :idna, "5.0.1", "5aa8fdce3f876f49d90daa13f071155a7c3259d02f7847dadd164da4a877da2a", [:rebar3], [{:unicode_util_compat, "0.1.0", [hex: :unicode_util_compat, optional: false]}]},
   "maxwell": {:hex, :maxwell, "2.2.2", "f841a62d9fc28fcbbb7c612970f0d71a48d2b673e6d7e67aaf3d2a6079c7d045", [:mix], [{:fuse, "~> 2.4", [hex: :fuse, repo: "hexpm", optional: true]}, {:hackney, "~> 1.6", [hex: :hackney, repo: "hexpm", optional: true]}, {:ibrowse, "~> 4.2", [hex: :ibrowse, repo: "hexpm", optional: true]}, {:mimerl, "~> 1.0.2", [hex: :mimerl, repo: "hexpm", optional: false]}, {:poison, "~> 2.1 or ~> 3.0", [hex: :poison, repo: "hexpm", optional: true]}], "hexpm"},
   "maxwell_cache": {:git, "https://github.com/sawater/maxwell_cache", "f439af1a4014b5e2f85e05d4334f5117eec2b066", []},
-  "maxwell_compress": {:git, "https://github.com/milkwine/maxwell_compress", "51e9f5a812e42677646f1945499a172ce1241465", []},
+  "maxwell_compress": {:hex, :maxwell_compress, "0.1.0", "db4052370f30f445b86b8d4b423361234fcdf7f87e47887f9964dd157965346e", [:mix], [{:maxwell, ">= 2.2.0", [hex: :maxwell, repo: "hexpm", optional: false]}], "hexpm"},
   "metrics": {:hex, :metrics, "1.0.1", "25f094dea2cda98213cecc3aeff09e940299d950904393b2a29d191c346a8486", [:rebar3], []},
   "mimerl": {:hex, :mimerl, "1.0.2", "993f9b0e084083405ed8252b99460c4f0563e41729ab42d9074fd5e52439be88", [:rebar3], []},
   "poison": {:hex, :poison, "3.1.0", "d9eb636610e096f86f25d9a46f35a9facac35609a7591b3be3326e99a0484665", [:mix], [], "hexpm"},
